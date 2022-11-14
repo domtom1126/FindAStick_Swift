@@ -9,9 +9,31 @@ import SwiftUI
 
 @main
 struct FindAStickApp: App {
+    
+    @State var carViewModel: CarViewModelView = CarViewModelView()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            TabView {
+                Home()
+                     .tabItem {
+                        Image(systemName: "house.fill")
+                        Text("First Tab")
+                      }
+                Post()
+                    .tabItem{
+                        Image(systemName: "plus.circle.fill")
+                    }
+                Liked()
+                    .tabItem{
+                        Image(systemName: "heart.fill")
+                    }
+                Profile()
+                    .tabItem{
+                        Image(systemName: "person.fill")
+                    }
+            }
+            .environmentObject(carViewModel)
         }
     }
 }
